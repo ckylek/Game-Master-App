@@ -9,22 +9,17 @@ class App extends Component {
     this.state = {
       elements: initialState
     };
-    this.updateName = this.updateName.bind(this);
-    this.updateInitiative = this.updateInitiative.bind(this);
-    this.updateHitpoints = this.updateHitpoints.bind(this);
-    this.addCard = this.addCard.bind(this);
-    this.removeElement = this.removeElement.bind(this);
   }
 
-  updateName(id, e) {
+  updateName = (id, e) => {
     const { value} = e.target;
     const elements = this.state.elements;
     const index = elements.findIndex(el => el.id === id);
     elements[index].name = value;
     this.setState({ elements });
-  }
+  };
 
-  updateInitiative(id, e) {
+  updateInitiative = (id, e) => {
     clearTimeout(this.timeout_)
     const { value } = e.target;
     const elements = this.state.elements;
@@ -32,22 +27,22 @@ class App extends Component {
     elements[index].initiative = Number(value);
     this.setState({ elements });
     this.timeout_ = setTimeout(() => this.sortElements(),  500);
-  }
+  };
 
-  updateHitpoints(id, e) {
+  updateHitpoints = (id, e) => {
     const { value } = e.target;
     const elements = this.state.elements;
     const index = elements.findIndex(el => el.id === id);
     elements[index].hitpoints = Number(value);
     this.setState({ elements });
-  }
+  };
 
-  sortElements() {
+  sortElements = () => {
     const { elements } = this.state;
     this.setState({ elements: elements.sort((l, r) => r.initiative - l.initiative)})
-  }
+  };
 
-  addCard() {
+  addCard = () => {
     const { elements } = this.state;
     elements[elements.length] = {
       id: elements.length + 1,
@@ -60,7 +55,7 @@ class App extends Component {
     });
   }
 
-  removeElement(id) {
+  removeElement = (id) => {
     let { elements } = this.state;
     elements = elements.filter(el => el.id !== id);
     this.setState({ elements });
