@@ -11,30 +11,18 @@ class App extends Component {
     };
   }
 
-  updateName = (id, e) => {
-    const { value} = e.target;
+  updateField = (id, e, field) => {
+    const {value} = e.target;
     const elements = this.state.elements;
     const index = elements.findIndex(el => el.id === id);
-    elements[index].name = value;
+    elements[index][field] = value;
     this.setState({ elements });
   };
 
   updateInitiative = (id, e) => {
     clearTimeout(this.timeout_)
-    const { value } = e.target;
-    const elements = this.state.elements;
-    const index = elements.findIndex(el => el.id === id);
-    elements[index].initiative = Number(value);
-    this.setState({ elements });
+    this.updateField(id, e, 'initiative')
     this.timeout_ = setTimeout(() => this.sortElements(),  500);
-  };
-
-  updateHitpoints = (id, e) => {
-    const { value } = e.target;
-    const elements = this.state.elements;
-    const index = elements.findIndex(el => el.id === id);
-    elements[index].hitpoints = Number(value);
-    this.setState({ elements });
   };
 
   sortElements = () => {
@@ -73,9 +61,8 @@ class App extends Component {
               initiative={element.initiative}
               hitpoints={element.hitpoints}
               id={element.id}
-              onNameChange={this.updateName}
+              onUpdateField={this.updateField}
               onInitiativeChange={this.updateInitiative}
-              onHitpointsChange={this.updateHitpoints}
               onRemove={this.removeElement}
           />
           )}

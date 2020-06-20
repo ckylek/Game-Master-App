@@ -1,13 +1,13 @@
 import React from 'react';
 import Input from './Input';
 
-export default ({ id,  name,  initiative, hitpoints, onNameChange,  onInitiativeChange, onHitpointsChange, onRemove }) =>
+export default ({ id,  name,  initiative, hitpoints,  onInitiativeChange, onUpdateField, onRemove }) =>
 <div className="card">
     <Input
         label="Name"
         type="text"
         value= {name}
-        onChange={e => onNameChange(id, e)}
+        onChange={e => onUpdateField(id, e, 'name')}
     />
     <Input
         label="Initiative"
@@ -19,7 +19,7 @@ export default ({ id,  name,  initiative, hitpoints, onNameChange,  onInitiative
         label="HP"
         type="number"
         value = {hitpoints}
-        onChange={e => onHitpointsChange(id,e)}
+        onChange={e => onUpdateField(id, e, 'hitpoints')}
         />
     <button onClick={() => onRemove(id)}>
         Remove
