@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from './Card';
 import { initialState } from  './constants';
+import { updateListElement } from './util.js';
 
 class App extends Component {
   constructor(props) {
@@ -13,10 +14,7 @@ class App extends Component {
 
   updateField = (id, e, field) => {
     const {value} = e.target;
-    const elements = this.state.elements;
-    const index = elements.findIndex(el => el.id === id);
-    elements[index][field] = value;
-    this.setState({ elements });
+    this.setState({ elements: updateListElement(this.state.elements, id, field, value) });
   };
 
   updateInitiative = (id, e) => {

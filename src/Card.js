@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import { roll20 } from './util.js';
 
 export default ({ id,  name,  initiative, hitpoints,  onInitiativeChange, onUpdateField, onRemove }) =>
 <div className="card">
@@ -15,6 +16,9 @@ export default ({ id,  name,  initiative, hitpoints,  onInitiativeChange, onUpda
         value = {initiative}
         onChange={e => onInitiativeChange(id, e)}
     />
+    <button onClick={() => onInitiativeChange(id, {target: {value: roll20()}})}>
+        d20
+        </button>
     <Input
         label="HP"
         type="number"
