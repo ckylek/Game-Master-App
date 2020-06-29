@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from './Input';
+import Input from './components/input';
 import { roll20 } from './util.js';
 
 export default ({ id,  name,  initiative, hitpoints,  onInitiativeChange, onUpdateField, onRemove }) =>
