@@ -1,23 +1,36 @@
+.root {
+  align-content: center;
+}
 .card {
-  margin-bottom: 12px;
-  width: 400px;
+  max-width: 960px;
   padding: 8px;
+  width: 75%;
+  margin: 0 auto;
   box-shadow: #eeeeee 1px 1px 1px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .card input {
   width: 100%;
   border: 0 0 5px 0;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .card label {
+  margin: 2em;
   flex: 4;
   font-size: 10px;
 }
 
 .card button {
   flex: 1;
+  padding: 1em;
+  font-weight: 700;
+}
+
+.header {
+  text-align: center;
+  font-size: 3em;
 }
